@@ -1,0 +1,21 @@
+{
+	"mongoUrl" : "mongodb://localhost:27017/hackathon",
+	
+	"secretKey" : "bKJNg0Vdq4DVwtFTG3rP",
+
+	"authorizedTpxIDs": ["DAM7"],
+
+	"registrationTpxIDs": ["DAM7", "GCJ3", "IB32"],
+
+	"rsa" : {
+		"n" : "70634332532511289631491472112433573245606576370430357006953926756525227954137",
+		"e" : "65537"
+	},
+
+	"aws" : {
+		"accessKeyId" : "AKIAILCWZCLKFIO7WZHQ",
+		"secretAccessKey" : "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"
+	},
+
+	"authenticationKey" : "12345"
+}

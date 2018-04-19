@@ -1,0 +1,23 @@
+{
+  "name": "resttechday",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.5.0",
+    "big-integer": "^1.6.25",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.0",
+    "jwt-simple": "^0.5.1",
+    "mathjs": "^3.16.4",
+    "moment": "^2.18.1",
+    "moment-timezone": "^0.5.13",
+    "mongodb": "^2.2.31",
+    "xml2js": "^0.4.19"
+  }
+}
