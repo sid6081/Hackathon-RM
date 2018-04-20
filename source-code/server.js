@@ -35,6 +35,8 @@ app.post("/Login", login.login);
 
 app.all("/Customer", customer.customer);
 
+app.post("/Event/insert", customer.insertEvent);
+
 app.post("/Event", customer.event);
 
-app.put("/Event", customer.event);
+app.all("/Rating", customer.rating);

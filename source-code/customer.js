@@ -27,7 +27,14 @@ module.exports = {
     event : (req, res) => {
 		if(req.method === 'POST'){
 			getEvents1(req, res);
-		} else if(req.method === 'PUT'){
+		} else {
+			var msg = req.method + ' is not defined for ' + req.url;
+			res.status(200).json({"status":"faliure", "message":msg})
+		}
+    },
+
+    insertEvent : (req, res) => {
+		if(req.method === 'POST'){
 			insertEvent(req, res);
 		} else {
 			var msg = req.method + ' is not defined for ' + req.url;
@@ -36,8 +43,10 @@ module.exports = {
     },
     
     rating : (req, res) => {
-        if(req.method === 'POST'){
-			rating(req, res);
+        if(req.method === 'GET'){
+			getRating(req, res);
+		} else if(req.method === 'POST'){
+			setRating(req, res);
 		} else {
 			var msg = req.method + ' is not defined for ' + req.url;
 			res.status(200).json({"status":"faliure", "message":msg})
@@ -45,7 +54,25 @@ module.exports = {
     }
 }
 
-rating = (req, res) => {
+getRating = (req, res) => {
+    var db = server.database;
+    var cursor;
+    if(req.headers['customerid']) {
+        cursor = db.collection(RATING_COLLECTION).find({"customerid":req.headers['customerid']});
+    } else {
+        cursor = db.collection(RATING_COLLECTION).find();
+    }
+    var ratingJsonResponse = [];
+    cursor.each(function(err, doc) {
+        if(doc !== null) {
+            ratingJsonResponse.push(doc);
+        } else {
+            res.status(200).json(ratingJsonResponse);
+        }
+    });
+}
+
+setRating = (req, res) => {
     if(Object.keys(req.body).length !== 0){
         var customerJson = req.body;
         var db = server.database;
@@ -55,12 +82,12 @@ rating = (req, res) => {
                     extensionMethods.handleError(res, err.message, "Failed to add rating data.");
                     return;
                 } else {
-                    res.status(200).json({"status":"success"});
+                    res.status(200).send({"status":"success"});
                 }
             });
         });
     } else {
-        res.status(400).json({"status":"failure", "message":"Request body not present"});
+        res.status(400).send({"status":"Request body not present"});
     }
 }
 
@@ -154,7 +181,7 @@ getEvents1 = (req, res) => {
         var customerJson = req.body;
         var db = server.database;
         var eventRes = [];
-        var cursor = db.collection(EVENT_COLLECTION).find({"name":'Bangalore'});
+        var cursor = db.collection(EVENT_COLLECTION).find({"name":req.body.place});
         cursor.each(function(err, doc) {
             if(doc !== null) {
                 var innerCursor = db.collection(CUSTOMER_COLLECTION).find({"customerid":req.body.customerid});
