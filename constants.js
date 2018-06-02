@@ -12,5 +12,6 @@ module.exports = {
 	FEEDBACK_COLLECTION: "FeedbackCollection",
 	CUSTOMER_COLLECTION: "CustomerCollection",
 	EVENT_COLLECTION: "EventCollection",
-	RATING_COLLECTION: "RatingCollection"
+	RATING_COLLECTION: "RatingCollection",
+	MAP_COLLECTION: "MapCollection"
 };

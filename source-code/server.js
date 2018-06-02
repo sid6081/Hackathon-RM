@@ -6,6 +6,7 @@ var config = require('../config.json');
 var employee = require('./employee.js');
 var login = require('./login.js');
 var customer = require('./customer.js');
+var map = require('./map.js');
 
 var app = express();
 app.use(express.static(__dirname + "/public"));
@@ -29,14 +30,16 @@ mongodb.MongoClient.connect(config.mongoUrl, function (err, database) {
 	});
 });
 
-app.all("/Employee", employee.employee);
+// app.all("/Employee", employee.employee);
 
-app.post("/Login", login.login);
+// app.post("/Login", login.login);
 
-app.all("/Customer", customer.customer);
+// app.all("/Customer", customer.customer);
 
-app.post("/Event/insert", customer.insertEvent);
+// app.post("/Event/insert", customer.insertEvent);
 
-app.post("/Event", customer.event);
+// app.post("/Event", customer.event);
 
-app.all("/Rating", customer.rating);
+// app.all("/Rating", customer.rating);
+
+app.all("/Map", map.map);
