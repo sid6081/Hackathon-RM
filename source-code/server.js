@@ -32,7 +32,9 @@ mongodb.MongoClient.connect(config.mongoUrl, function (err, database) {
 
 // app.all("/Employee", employee.employee);
 
-// app.post("/Login", login.login);
+app.post("/Login", login.login);
+
+app.post("/Register", login.registration);
 
 // app.all("/Customer", customer.customer);
 
