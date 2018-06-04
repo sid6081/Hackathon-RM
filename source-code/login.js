@@ -25,12 +25,12 @@ module.exports = {
 							}
 						});
 					} else {
-						res.status(400).json({"status":"failure", "response":"User not found"});
+						res.status(200).json({"status":"failure", "message":"User not found"});
 					}
 				}
 			});
 		} else {
-			res.status(400).json({"status":"failure", "response":"Request body not present"});
+			res.status(400).json({"status":"failure", "message":"Request body not present"});
 		}
 	},
 
@@ -42,7 +42,7 @@ module.exports = {
 					extensionMethods.handleError(res, countErr.message, "Customer Count Error");
 				} else {
 					if(empCount > 0){
-						res.status(400).json({"status":"failure", "response":"EmailId already registered"});
+						res.status(400).json({"status":"failure", "message":"EmailId already registered"});
 					} else {
 						var requestBody = req.body;
 						db.createCollection(CUSTOMER_COLLECTION, function(req, collection) {
@@ -59,7 +59,7 @@ module.exports = {
 				}
 			});
 		} else {
-			res.status(400).json({"status":"failure", "response":"Request body not present"});
+			res.status(400).json({"status":"failure", "message":"Request body not present"});
 		}
 	}
 }

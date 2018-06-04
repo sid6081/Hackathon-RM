@@ -16,9 +16,9 @@ module.exports = {
 		} else if(req.method === 'POST'){
 			insertMapDataPoint(req, res);
 		} else if(req.method === 'PUT'){
-			updateMapDataPoint(req, res);
+			//updateMapDataPoint(req, res);
 		} else if(req.method === 'DELETE'){
-			removeMapDataPoint(req, res);
+			//removeMapDataPoint(req, res);
 		} else {
 			var msg = req.method + ' is not defined for ' + req.url;
 			res.status(200).json({"status":"faliure", "message":msg})
